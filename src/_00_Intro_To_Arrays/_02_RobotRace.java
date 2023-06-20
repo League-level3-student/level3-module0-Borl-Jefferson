@@ -21,7 +21,7 @@ for (int i = 0; i < ger.length; i++) {
         // 3. use a for loop to initialize the robots.
 for(int i=0; i<rob.length; i++) {
 	rob[i]= new Robot();
-	rob[i].setSpeed(5);
+	rob[i].setSpeed(500);
 	rob[i].moveTo(50+100*i, 500);
 	
 	
@@ -30,7 +30,8 @@ while(!hadwon){
 	for(int i=0; i<rob.length; i++) {
 	ger[i]+=r.nextInt(50);
 	rob[i].move(ger[i]);
-	rob[i].setAngle(ger[i]);
+	
+	rob[i].setAngle(ger[i+i]);
 	
 	
 	
