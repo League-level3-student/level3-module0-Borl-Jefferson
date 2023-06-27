@@ -31,8 +31,8 @@ public class _02_2DArrayPractice {
      *          6, 7, 8
      */
     public Integer[][] test1() {
-        
-        return null;
+       Integer[][] array1=new Integer[3][3];
+        return array1;
     }
     
     /*
@@ -41,8 +41,8 @@ public class _02_2DArrayPractice {
      *          "e", "f", "g", "e"
      */
     public String[][] test2() {
-        
-        return null;
+        String[][] array2=new String[2][4];
+        return array2;
     }
     
     /*
@@ -55,7 +55,8 @@ public class _02_2DArrayPractice {
      */
     public Boolean[][] test3() {
         
-        return null;
+        Boolean[][] array3=new Boolean[5][2];
+        return array3;
     }
     
     /*
@@ -64,7 +65,9 @@ public class _02_2DArrayPractice {
      * 
      * int[][] grid = new int[2][3];
      * 
-     * 
+     *  5 5 5 
+     *  5 5 5 
+     *    
      * 
      * Show your teacher the grid you created
      */
@@ -75,7 +78,8 @@ public class _02_2DArrayPractice {
      * 
      * Robot[][] robots = new Robot[4][2];
      * 
-     * 
+     *  r r r r
+     *  r r r r
      * 
      * Show your teacher the grid you created
      */
@@ -85,9 +89,19 @@ public class _02_2DArrayPractice {
      *          null, null, null, Object
      */
     public Object test4() {
+    	int i2=100;
+    	int j2=100;
         Object[][] objects = { {null, null, null, null}, {null, null, null, new Object()} };
-        
-        return null;
+        for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 1; j++) {
+				if(objects[j][i]!=null) {
+					j2=j;
+					i2=i;
+					
+				}
+			}
+		}
+        return objects[i2][j2];
     }
     
     /* Given the array of Objects below, return the element that is not null
@@ -95,9 +109,19 @@ public class _02_2DArrayPractice {
      *          null, null, null, null
      */
     public Object test5() {
+    	int i2=100;
+    	int j2=100;
         Object[][] objects = { {null, null, new Object(), null}, {null, null, null, null} };
-        
-        return null;
+        for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 1; j++) {
+				if(objects[j][i]!=null) {
+					j2=j;
+					i2=i;
+					
+				}
+			}
+		}
+        return objects[i2][j2];
     }
     
     /*
@@ -105,9 +129,12 @@ public class _02_2DArrayPractice {
      * first row (row 0)
      */
     public Integer test6() {
+    	int total=0;
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
+        for (int i = 0; i < 3; i++) {
+			total+=nums[0][i];
+		}
+        return total;
     }
     
     /*
@@ -115,18 +142,29 @@ public class _02_2DArrayPractice {
      * first column (column 0)
      */
     public Integer test7() {
+    	int total=0;
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        
-        return null;
+        for (int i = 0; i < 2; i++) {
+			total+=nums[i][0];
+		}
+        return total;
+      
     }
     
     /*
+     * array
+     *  5 5 5
+     *  5 5 5
+     * 
      * Write an algorithm to return the sum of all the numbers in the
      * specified row
      */
     public Integer getSumByRow(int[][] matrix, int row) {
-        
-        return null;
+    	int total=0;
+        for (int i = 0; i < matrix[0].length; i++) {
+			total+=matrix[0][i];
+		}
+        return total;
     }
     
     /*
@@ -134,7 +172,10 @@ public class _02_2DArrayPractice {
      * specified column
      */
     public Integer getSumByColumn(int[][] matrix, int col) {
-        
+    	int total=0;
+        for (int i = 0; i < matrix.length; i++) {
+			total+=matrix[i][1];
+		}
         return null;
     }
     

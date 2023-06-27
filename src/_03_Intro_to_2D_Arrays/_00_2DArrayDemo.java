@@ -47,6 +47,7 @@ public class _00_2DArrayDemo {
          * Getting a single element from a 2D array
          */
         System.out.println(anotherArray2d[0][1]);
+        System.out.println();
 
         /*
          * Looping through all the elements of a 2D array
@@ -61,6 +62,9 @@ public class _00_2DArrayDemo {
             }
 
             System.out.println();
+            
         }
+        System.out.println(newArray2d);
+            System.out.println();
     }
 }
