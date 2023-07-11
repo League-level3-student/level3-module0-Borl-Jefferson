@@ -92,8 +92,8 @@ public class _02_2DArrayPractice {
     	int i2=100;
     	int j2=100;
         Object[][] objects = { {null, null, null, null}, {null, null, null, new Object()} };
-        for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 1; j++) {
+        for (int i = 0; i < 4; i++) {
+			for (int j = 0; j < 2; j++) {
 				if(objects[j][i]!=null) {
 					j2=j;
 					i2=i;
@@ -101,7 +101,7 @@ public class _02_2DArrayPractice {
 				}
 			}
 		}
-        return objects[i2][j2];
+        return objects[j2][i2];
     }
     
     /* Given the array of Objects below, return the element that is not null
@@ -121,7 +121,7 @@ public class _02_2DArrayPractice {
 				}
 			}
 		}
-        return objects[i2][j2];
+        return objects[j2][i2];
     }
     
     /*
@@ -131,7 +131,7 @@ public class _02_2DArrayPractice {
     public Integer test6() {
     	int total=0;
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < nums[0].length; i++) {
 			total+=nums[0][i];
 		}
         return total;
@@ -144,7 +144,7 @@ public class _02_2DArrayPractice {
     public Integer test7() {
     	int total=0;
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < nums.length; i++) {
 			total+=nums[i][0];
 		}
         return total;
@@ -161,8 +161,8 @@ public class _02_2DArrayPractice {
      */
     public Integer getSumByRow(int[][] matrix, int row) {
     	int total=0;
-        for (int i = 0; i < matrix[0].length; i++) {
-			total+=matrix[0][i];
+        for (int i = 0; i < matrix.length; i++) {
+			total+=matrix[row][i];
 		}
         return total;
     }
@@ -174,9 +174,9 @@ public class _02_2DArrayPractice {
     public Integer getSumByColumn(int[][] matrix, int col) {
     	int total=0;
         for (int i = 0; i < matrix.length; i++) {
-			total+=matrix[i][1];
+			total+=matrix[i][col];
 		}
-        return null;
+        return total;
     }
     
     /*
@@ -199,22 +199,51 @@ public class _02_2DArrayPractice {
      *    boundaries, return null.
      */
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+    	if(row==0) {
+    		return null;
+    	}
+    	else {
+    	int east = matrix[row][col+1];
+    
+     
+    	
+        return east;
+    	}
     }
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+    	if(row==2) {
+    		return null;
+    	}
+    	else {
+    	 int west =  matrix[row][col-1];
+     
+    	
+        return west;
+    	}
     }
     
     public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+       
+    	if(row==0) {
+    		return null;
+    	}
+    	else {
+    	int north = matrix[row-1][col];
+   
+        System.out.println("north " + north);
+        return north;
+    	}
     }
     
     public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+    	if(row==2) {
+    		return null;
+    	}
+    	else {
+    	  int south = matrix[row+1][col];
+    	  
+        return south;
+    	}
     }
 }
