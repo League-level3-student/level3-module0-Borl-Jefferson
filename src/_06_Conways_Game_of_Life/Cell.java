@@ -24,7 +24,7 @@ public class Cell implements Drawable{
      *
      * 1. Any live cell with fewer than two live nieghbours dies, as if caused
      * by underpopulation.
-     * 
+    
      * 2. Any live cell with two or three live neighbours lives on to the next
      * generation.
      * 
