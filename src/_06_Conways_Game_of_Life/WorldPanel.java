@@ -30,11 +30,15 @@ Cell cel[][];
         // 2. Calculate the cell size.
         cellSize = ConwaysGameOfLife.WIDTH/cpr;
         // 3a. Initialize the cell array to the appropriate size.
-cel = new Cell[cpr][cellSize];
+cel = new Cell[cpr][cpr];
         // 3b. Iterate through the array and initialize each cell.
         //    Don't forget to consider the cell's dimensions when 
         //    passing in the location.
-
+for (int i = 0; i < cel.length; i++) {
+	for (int j = 0; j < cel[0].length; j++) {
+	 cel[i][j] = new Cell(j*cellSize, i*cellSize, cellSize);
+	}
+	}
     }
 
     public void randomizeCells() {
@@ -44,6 +48,7 @@ for (int i = 0; i < cel.length; i++) {
 	for (int j = 0; j < cel[0].length; j++) {
 		Boolean rb = r.nextBoolean();
 		cel[i][j].isAlive= rb;
+		//cel[i][j].isAlive= true;
 	}
 }
         repaint();
@@ -90,40 +95,30 @@ for (int i = 0; i < cel.length; i++) {
         // 7. iterate through cells and fill in the livingNeighbors array
         //    using the getLivingNeighbors method.
         int[][] livingNeighbors = new int[cellsPerRow][cellsPerRow];
-       	for (int i = 0; i < cel.length; i++) {
+       	
+        
+        for (int i = 0; i < cel.length; i++) {
     		for (int j = 0; j < cel[0].length; j++) {
-    			getLivingNeighbors(cel, i, j);
+    			
+    			livingNeighbors[i][j]=getLivingNeighbors(cel, i, j);
+    		
     		}
     		}
+       
         // 8. check if each cell should live or die
         /*
          * 10. Complete the liveOrDie method
          *     It sets isAlive to true or false based on the neighbors and 
          *     the rules of the game:
          *
-       
+       */
    
-         * 
-         * 3. Any live cell with more than three live neighbours dies, as if by
-         * overpopulation.
-         * 
-         * 4. Any dead cell with exactly three live neighbours becomes a live cell,
-         * as if by reproduction.
-         * (source: Wikipedia) 
-         */
+        
      	for (int i = 0; i < cel.length; i++) {
     		for (int j = 0; j < cel[0].length; j++) {
-    			if(getLivingNeighbors(cel, i, j)<2) {
-    				cel[i][j].isAlive=false;
-    			}
-    			if(getLivingNeighbors(cel, i, j)>3) {
-    				cel[i][j].isAlive=false;
-    			}
-    			if(getLivingNeighbors(cel, i, j)==3) {
-    				cel[i][j].isAlive=true;
-    			}
+    		cel[i][j].liveOrDie(livingNeighbors[i][j]);
     		}
-    		}
+    	}
         repaint();
     }
 
@@ -190,7 +185,7 @@ for (int i = 0; i < cel.length; i++) {
         //    location and toggle the 'isAlive' variable for that cell.
 int mx = e.getX()/cellSize;
 int my = e.getY()/cellSize;
-cel[mx][my].isAlive=!cel[mx][my].isAlive;
+cel[my][mx].isAlive=!cel[my][mx].isAlive;
         repaint();
     }
 
