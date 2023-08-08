@@ -50,10 +50,85 @@ package _07_The_Wrong_Way_Cow;
 
 public class TheWrongWayCow {
 
-    public static int[] findWrongWayCow(final char[][] field) {
-        // Fill in the code to return the [col, row] coordinate position of the
-        // head (letter 'c') of the wrong way cow!
-        
-        return null;
-    }
+	public static int[] findWrongWayCow(final char[][] field) {
+		// Fill in the code to return the [col, row] coordinate position of the
+		// head (letter 'c') of the wrong way cow!
+		String[][] fld = new String[field.length][field[0].length];
+		int north = 0;
+		int south = 0;
+		int east = 0;
+		int west = 0;
+
+		// getting the amount of cows facing each direction
+		for (int i = 0; i < fld[0].length; i++) {
+			for (int j = 0; j < fld.length; j++) {
+				if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
+					west++;
+				}
+				if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
+					east++;
+				}
+
+				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+					north++;
+				}
+				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+					south++;
+				}
+			}
+		}
+
+		// finds the direction most of them are facing
+		int wrng; // north=1  south=2   east=3  west=4
+		if (north == 1) {
+			wrng = 1;
+		}
+		if (south == 1) {
+			wrng = 2;
+		}
+		if (east == 1) {
+			wrng = 3;
+		}
+		if (west == 1) {
+			wrng = 4;
+		}
+		
+		
+		
+		
+		for (int i = 0; i < fld[0].length; i++) {
+			for (int j = 0; j < fld.length; j++) {
+				if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
+					west++;
+				}
+			}
+		}
+				for (int i = 0; i < fld[0].length; i++) {
+					for (int j = 0; j < fld.length; j++) {
+				if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
+					east++;
+				}
+					}
+				}
+				for (int i = 0; i < fld[0].length; i++) {
+					for (int j = 0; j < fld.length; j++) {
+				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+					north++;
+				}
+					}
+					}
+				for (int i = 0; i < fld[0].length; i++) {
+					for (int j = 0; j < fld.length; j++) {
+				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+					south++;
+				}
+					}
+				}
+			
+		
+		
+		
+		return null;
+	}
+
 }
