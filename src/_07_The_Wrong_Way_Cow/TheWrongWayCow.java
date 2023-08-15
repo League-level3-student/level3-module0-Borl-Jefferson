@@ -48,20 +48,32 @@
 
 package _07_The_Wrong_Way_Cow;
 
+import java.util.Arrays;
+
 public class TheWrongWayCow {
 
 	public static int[] findWrongWayCow(final char[][] field) {
 		// Fill in the code to return the [col, row] coordinate position of the
 		// head (letter 'c') of the wrong way cow!
+		/*
+		 * String[][] fld = new String[2][3]; for (int i =2; i < 2; i++) { for (int j =
+		 * 2; j < 3; j++) { fld[i][j]="cow"; } } fld[2][2]="woc";
+		 */
 		String[][] fld = new String[field.length][field[0].length];
+
 		int north = 0;
 		int south = 0;
 		int east = 0;
 		int west = 0;
+		for (int i = 1; i < fld.length; i++) {
+			for (int j = 1; j < fld[0].length; j++) {
+				fld[i][j] = String.valueOf(field[i][j]);
+			}
+		}
 
 		// getting the amount of cows facing each direction
-		for (int i = 0; i < fld[0].length; i++) {
-			for (int j = 0; j < fld.length; j++) {
+		for (int i = 1; i < fld[0].length - 2 - 2; i++) {
+			for (int j = 1; j < fld.length - 2 - 2; j++) {
 				if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
 					west++;
 				}
@@ -79,7 +91,7 @@ public class TheWrongWayCow {
 		}
 
 		// finds the direction most of them are facing
-		int wrng; // north=1  south=2   east=3  west=4
+		int wrng = 5; // north=1 south=2 east=3 west=4
 		if (north == 1) {
 			wrng = 1;
 		}
@@ -92,43 +104,69 @@ public class TheWrongWayCow {
 		if (west == 1) {
 			wrng = 4;
 		}
-		
-		
-		
-		
-		for (int i = 0; i < fld[0].length; i++) {
-			for (int j = 0; j < fld.length; j++) {
-				if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
-					west++;
+
+		if (wrng == 5) {
+			System.out.println("Didn't find any wrong way cows");
+		}
+
+		// gets the position of the wrong way cow
+		int wwcy = 0;
+		int wwcx = 0;
+		String w = "w";
+		String o = "o";
+		String c = "c";
+		if (wrng == 1) {
+			for (int i = 1; i < fld[0].length - 2; i++) {
+				for (int j = 1; j < fld.length - 2; j++) {
+					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+						wwcy = i;
+						wwcx = j;
+					}
 				}
 			}
 		}
-				for (int i = 0; i < fld[0].length; i++) {
-					for (int j = 0; j < fld.length; j++) {
-				if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
-					east++;
+		if (wrng == 2) {
+			for (int i = 1; i < fld[0].length - 2; i++) {
+				for (int j = 1; j < fld.length - 2; j++) {
+				try {	
+					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+						System.out.println("y x "+ wwcy + " " + wwcx);
+						wwcy = i;
+						wwcx = j;
+					}
+				}catch(NullPointerException e) {
+					System.out.println("sdas g grf ");
 				}
+				}
+			}
+		}
+		if (wrng == 3) {
+			for (int i = 1; i < fld[0].length - 2; i++) {
+				for (int j = 1; j < fld.length - 2; j++) {							
+					if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
+						wwcy = i;
+						wwcx = j;
+						
 					}
 				}
-				for (int i = 0; i < fld[0].length; i++) {
-					for (int j = 0; j < fld.length; j++) {
-				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
-					north++;
-				}
-					}
-					}
-				for (int i = 0; i < fld[0].length; i++) {
-					for (int j = 0; j < fld.length; j++) {
-				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
-					south++;
-				}
+		}
+		}
+		if (wrng == 4) {
+			for (int i = 1; i < fld[0].length - 2; i++) {
+				for (int j = 1; j < fld.length - 2; j++) {
+					if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
+						wwcy = i;
+						wwcx = j;
 					}
 				}
-			
-		
-		
-		
-		return null;
+			}
+		}
+
+		int[] op = new int[2];
+		op[0] = wwcx;
+		op[1] = wwcy;
+		System.out.println("wwc should be at " + Arrays.toString(op));
+		return op;
 	}
 
 }
