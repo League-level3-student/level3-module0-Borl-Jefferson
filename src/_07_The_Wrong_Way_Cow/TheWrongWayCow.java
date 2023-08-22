@@ -72,20 +72,32 @@ public class TheWrongWayCow {
 		}
 
 		// getting the amount of cows facing each direction
-		for (int i = 1; i < fld[0].length - 2 - 2; i++) {
-			for (int j = 1; j < fld.length - 2 - 2; j++) {
-				if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
-					west++;
+		for (int i = 0; i < fld[0].length; i++) {
+			for (int j = 0; j < fld.length; j++) {
+				if ((i + 2) < fld[0].length - 2) {
+					if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
+
+						west++;
+					}
 				}
-				if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
-					east++;
+				if ((i + 2) < fld[0].length - 2) {
+					if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
+
+						east++;
+					}
 				}
 
-				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
-					north++;
+				if ((j + 2) < fld[0].length - 2) {
+					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+
+						north++;
+					}
 				}
-				if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
-					south++;
+				if ((j + 2) < fld[0].length - 2) {
+					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+
+						south++;
+					}
 				}
 			}
 		}
@@ -107,56 +119,51 @@ public class TheWrongWayCow {
 
 		if (wrng == 5) {
 			System.out.println("Didn't find any wrong way cows");
+			System.out.println(north);
+			System.out.println(south);
+			System.out.println(east);
+			System.out.println(west);
 		}
 
 		// gets the position of the wrong way cow
 		int wwcy = 0;
 		int wwcx = 0;
-		String w = "w";
-		String o = "o";
-		String c = "c";
-		if (wrng == 1) {
-			for (int i = 1; i < fld[0].length - 2; i++) {
-				for (int j = 1; j < fld.length - 2; j++) {
-					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
-						wwcy = i;
-						wwcx = j;
+
+		for (int i = 0; i < fld.length; i++) {
+			for (int j = 0; j < fld[0].length; j++) {
+				if (wrng == 1) {
+					if ((j + 2) < fld[0].length - 2) {
+						if (fld[i][j].equals("c") && fld[i][j + 1].equals("o") && fld[i][j + 2].equals("w")) {
+							wwcy = j;
+							wwcx = i;
+
+						}
 					}
-				}
-			}
-		}
-		if (wrng == 2) {
-			for (int i = 1; i < fld[0].length - 2; i++) {
-				for (int j = 1; j < fld.length - 2; j++) {
-				try {	
-					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
-						System.out.println("y x "+ wwcy + " " + wwcx);
-						wwcy = i;
-						wwcx = j;
+					if (wrng == 2) {
+						if ((j + 2) < fld[0].length - 2) {
+							if (fld[i][j].equals("c") && fld[i][j + 1].equals("o") && fld[i][j + 2].equals("w")) {
+								wwcy = j;
+								wwcx = i;
+							}
+						}
 					}
-				}catch(NullPointerException e) {
-					System.out.println("sdas g grf ");
-				}
-				}
-			}
-		}
-		if (wrng == 3) {
-			for (int i = 1; i < fld[0].length - 2; i++) {
-				for (int j = 1; j < fld.length - 2; j++) {							
-					if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
-						wwcy = i;
-						wwcx = j;
-						
+
+					if (wrng == 3) {
+						if ((i + 2) < fld[0].length - 2) {
+							if (fld[i][j].equals("w") && fld[i + 1][j].equals("o") && fld[i + 2][j].equals("c")) {
+								wwcy = j;
+								wwcx = i;
+							}
+						}
 					}
-				}
-		}
-		}
-		if (wrng == 4) {
-			for (int i = 1; i < fld[0].length - 2; i++) {
-				for (int j = 1; j < fld.length - 2; j++) {
-					if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
-						wwcy = i;
-						wwcx = j;
+
+					if (wrng == 4) {
+						if ((i + 2) < fld[0].length - 2) {
+							if (fld[i][j].equals("c") && fld[i + 1][j].equals("o") && fld[i + 2][j].equals("w")) {
+								wwcy = j;
+								wwcx = i;
+							}
+						}
 					}
 				}
 			}
@@ -166,6 +173,7 @@ public class TheWrongWayCow {
 		op[0] = wwcx;
 		op[1] = wwcy;
 		System.out.println("wwc should be at " + Arrays.toString(op));
+		System.out.println(wrng);
 		return op;
 	}
 
