@@ -30,11 +30,11 @@
  * Answer: [8,4]
  * 
  * Notes
- * The test cases will NOT test any situations where there are "imaginary" cows,
+ * The test cases will NOT test any situations where there are 'imaginary' cows,
  * so your solution does not need to worry about such things!
  * 
  * To explain - Yes, I recognize that there are certain configurations where an
- * "imaginary" cow may appear that in fact is just made of three other "real" cows.
+ * 'imaginary' cow may appear that in fact is just made of three other 'real' cows.
  * 
  * In the following field you can see there are 4 real cows (3 are facing south and
  * 1 is facing north). There are also 2 imaginary cows (facing east and west).
@@ -56,45 +56,47 @@ public class TheWrongWayCow {
 		// Fill in the code to return the [col, row] coordinate position of the
 		// head (letter 'c') of the wrong way cow!
 		/*
-		 * String[][] fld = new String[2][3]; for (int i =2; i < 2; i++) { for (int j =
-		 * 2; j < 3; j++) { fld[i][j]="cow"; } } fld[2][2]="woc";
+		 * String[][] field = new String[2][3]; for (int i =2; i < 2; i++) { for (int j =
+		 * 2; j < 3; j++) { field[i][j]='cow'; } } field[2][2]='woc';
 		 */
-		String[][] fld = new String[field.length][field[0].length];
+	//	String[][] field = new String[field.length][field[0].length];
 
 		int north = 0;
 		int south = 0;
 		int east = 0;
 		int west = 0;
-		for (int i = 1; i < fld.length; i++) {
-			for (int j = 1; j < fld[0].length; j++) {
-				fld[i][j] = String.valueOf(field[i][j]);
+		/*for (int i = 0; i < field.length; i++) {
+			for (int j = 0; j < field[0].length; j++) {
+				field[i][j] = String.valueOf(field[i][j]);
 			}
-		}
+		}*/
 
 		// getting the amount of cows facing each direction
-		for (int i = 0; i < fld[0].length; i++) {
-			for (int j = 0; j < fld.length; j++) {
-				if ((i + 2) < fld[0].length - 2) {
-					if (fld[j][i].equals("c") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("w")) {
+		for (int j = 0; j < field.length; j++) {
+			for (int i = 0; i < field[0].length; i++) {
+				
+				if (i+2<field[j].length) {
+					if (field[j][i]==('c') && field[j][i + 1]==('o') && field[j][i + 2]==('w')) {
 
 						west++;
 					}
 				}
-				if ((i + 2) < fld[0].length - 2) {
-					if (fld[j][i].equals("w") && fld[j + 1][i].equals("o") && fld[j + 2][i].equals("c")) {
+				if (i+2<field[j].length) {
+					if (field[j][i]==('w') && field[j][i + 1]==('o') && field[j][i + 2]==('c')) {
 
 						east++;
 					}
 				}
 
-				if ((j + 2) < fld[0].length - 2) {
-					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+				if (j+2<field.length) {
+					if (field[j][i]==('c') && field[j + 1][i]==('o') && field[j + 2][i]==('w')) {
 
 						north++;
 					}
+
 				}
-				if ((j + 2) < fld[0].length - 2) {
-					if (fld[j][i].equals("c") && fld[j][i + 1].equals("o") && fld[j][i + 2].equals("w")) {
+				if (j+2<field.length) {
+					if (field[j][i]==('w') && field[j + 1][i]==('o') && field[j + 2][i]==('c')) {
 
 						south++;
 					}
@@ -102,6 +104,7 @@ public class TheWrongWayCow {
 			}
 		}
 
+	
 		// finds the direction most of them are facing
 		int wrng = 5; // north=1 south=2 east=3 west=4
 		if (north == 1) {
@@ -124,47 +127,50 @@ public class TheWrongWayCow {
 			System.out.println(east);
 			System.out.println(west);
 		}
-
+System.out.println(wrng);
 		// gets the position of the wrong way cow
 		int wwcy = 0;
 		int wwcx = 0;
-
-		for (int i = 0; i < fld.length; i++) {
-			for (int j = 0; j < fld[0].length; j++) {
+		
+		for (int i = 0; i < field[0].length; i++) {
+			for (int j = 0; j < field.length; j++) {
+				
 				if (wrng == 1) {
-					if ((j + 2) < fld[0].length - 2) {
-						if (fld[i][j].equals("c") && fld[i][j + 1].equals("o") && fld[i][j + 2].equals("w")) {
+					if (j+2<field.length) {
+						if (field[j][i]==('c') && field[j + 1][i]==('o') && field[j + 2][i]==('w')) {
+
 							wwcy = j;
 							wwcx = i;
 
 						}
 					}
+				}
 					if (wrng == 2) {
-						if ((j + 2) < fld[0].length - 2) {
-							if (fld[i][j].equals("c") && fld[i][j + 1].equals("o") && fld[i][j + 2].equals("w")) {
-								wwcy = j;
+						if (j+2<field.length) {
+							if (field[j][i]==('w') && field[j + 1][i]==('o') && field[j + 2][i]==('c')) {
+								wwcy = j+2;
 								wwcx = i;
 							}
 						}
 					}
 
 					if (wrng == 3) {
-						if ((i + 2) < fld[0].length - 2) {
-							if (fld[i][j].equals("w") && fld[i + 1][j].equals("o") && fld[i + 2][j].equals("c")) {
+						if (i+2<field[j].length) {
+							if (field[j][i]==('w') && field[j][i + 1]==('o') && field[j][i + 2]==('c')) {
 								wwcy = j;
-								wwcx = i;
+								wwcx = i+2;
 							}
 						}
 					}
 
 					if (wrng == 4) {
-						if ((i + 2) < fld[0].length - 2) {
-							if (fld[i][j].equals("c") && fld[i + 1][j].equals("o") && fld[i + 2][j].equals("w")) {
+						if (i+2<field[j].length) {
+							if (field[j][i]==('c') && field[j][i + 1]==('o') && field[j][i + 2]==('w')) {
 								wwcy = j;
 								wwcx = i;
 							}
 						}
-					}
+					
 				}
 			}
 		}
