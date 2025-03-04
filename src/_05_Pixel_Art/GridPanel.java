@@ -4,10 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import java.io.Serializable;
+
 import javax.swing.JPanel;
 
-public class GridPanel extends JPanel{
-
+public class GridPanel extends JPanel implements Serializable{
     private static final long serialVersionUID = 1L;
     private int windowWidth;
     private int windowHeight;
@@ -48,6 +49,8 @@ for (int i = 0; i < pxl.length; i++) {
     public void setColor(Color c) {
         color = c;
     }
+    
+   
 
     public void clickPixel(int mouseX, int mouseY) {
         // 5. Use the mouseX and mouseY variables to change the color
