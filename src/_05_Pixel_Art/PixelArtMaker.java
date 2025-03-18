@@ -107,6 +107,7 @@ public class PixelArtMaker implements MouseListener, ActionListener{
 		if(j.getSource().equals(jb2)) {
 			gp=load();
 			window.removeAll();
+			window.setVisible(false);
 			
 			window = new JFrame("Pixel Art");
 	        window.setLayout(new FlowLayout());
