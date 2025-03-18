@@ -3,7 +3,7 @@ package _05_Pixel_Art;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-
+ 
 import java.io.Serializable;
 
 import javax.swing.JPanel;

@@ -29,7 +29,7 @@ public class GridInputPanel extends JPanel{
         add(windowWidthField);
         add(new JLabel("\tscreen height:"));
         add(windowHeightField);
-        add(new JLabel("\ttotal rows:"));
+        add(new JLabel("\ttotal rows:")); 
         add(rowsField);
         add(new JLabel("\ttotal columns:"));
         add(colsField);

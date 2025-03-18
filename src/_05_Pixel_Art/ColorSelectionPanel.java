@@ -35,7 +35,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
     public ColorSelectionPanel() {
         rSlider = new JSlider(JSlider.VERTICAL);
         gSlider = new JSlider(JSlider.VERTICAL);
-        bSlider = new JSlider(JSlider.VERTICAL);
+        bSlider = new JSlider(JSlider.VERTICAL); 
 
         rSlider.setMinimum(0);
         rSlider.setMaximum(MAX_COLOR - 1);

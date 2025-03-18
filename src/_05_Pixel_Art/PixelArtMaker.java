@@ -24,7 +24,7 @@ public class PixelArtMaker implements MouseListener, ActionListener{
     GridPanel gp;
     ColorSelectionPanel csp;
     JButton jb;
-    JButton jb2;
+    JButton jb2; 
 
     public void start() {
         gip = new GridInputPanel(this);	
